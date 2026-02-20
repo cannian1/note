@@ -36,5 +36,5 @@ def numerical_gradient(f, X):
         grad = np.zeros_like(X)
         # 遍历 X 中的每一行数据，分别求梯度
         for i, v in enumerate(X):
-            grad[i] = numerical_diff(f, v)
+            grad[i] = _numerical_gradient(f, v)
         return grad

@@ -63,4 +63,3 @@ def cross_entropy(y, t):
 
     n = y.shape[0]  # y 的行数
     return -np.sum(np.log(y[np.arange(n), t] + 1e-10)) / n
-
