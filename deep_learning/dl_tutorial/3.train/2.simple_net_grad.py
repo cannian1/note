@@ -34,4 +34,5 @@ if __name__ == '__main__':
     f = lambda _: net.loss(x, t)
     gradw = numerical_gradient(f, net.W)
 
+    # 2 * 3 的矩阵，表示损失函数相对于每个权重的梯度
     print(gradw)
