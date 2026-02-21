@@ -4,7 +4,7 @@ from two_layer_net import TwoLayerNet  # 两层神经网络类
 from common.load_data import get_data  # 加载数据集函数
 
 """
-这种做法性能非常差，因为算梯度需要对矩阵中每个元素用数值微分法求偏导
+反向传播算法训练两层神经网络进行 MNIST 手写数字识别
 """
 
 # 1. 加载数据
@@ -33,10 +33,11 @@ for i in range(iter_num):
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
     # 4.2 计算梯度
-    grad = network.numerical_gradient(x_batch, t_batch)
-    print("[grad:]=====", i)
+    grad = network.gradient(x_batch, t_batch)
+    # print("[grad:]=====", i)
     # 4.3 更新参数
-    for key in grad.keys():
+    # for key in grad.keys():
+    for key in ('W1', 'b1', 'W2', 'b2'):
         network.params[key] -= learning_rate * grad[key]
     # 4.4 计算并保存当前的训练损失
     loss = network.loss(x_batch, t_batch)
