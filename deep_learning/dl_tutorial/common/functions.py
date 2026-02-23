@@ -6,6 +6,10 @@ def step_function(x):
     return 1 if x >= 0 else 0
 
 
+# sigmoid 函数可以用做激活函数和输出层函数，双曲正切函数只能用作激活函数
+# tanh 关于原点对称
+
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
@@ -14,10 +18,13 @@ def tanh(x):
     return np.tanh(x)
 
 
+# 深层神经网络的隐藏层激活函数一般是 relu，不会出现梯度减少的现象
+# relu 也可以用在二分类问题的输出层
 def relu(x):
     return np.maximum(0, x)
 
 
+# 经常用于多分类或二分类问题的输出层
 def softmax(x):
     if x.ndim == 2:
         x = x - np.max(x, axis=1, keepdims=True)
